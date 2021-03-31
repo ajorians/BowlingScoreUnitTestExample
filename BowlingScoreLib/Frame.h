@@ -3,14 +3,17 @@
 class Frame
 {
 public:
-   Frame() = default;
+   constexpr Frame() = default;
 
-   Frame( int firstRoll, int secondRoll );
+   constexpr Frame( int firstRoll, int secondRoll )
+      : _firstRoll( firstRoll )
+      , _secondRoll( secondRoll )
+   {}
 
-   int FirstRoll() const;
-   int SecondRoll() const;
+   constexpr int FirstRoll() const { return _firstRoll; }
+   constexpr int SecondRoll() const { return _secondRoll; }
 
-   bool IsStrike() const;
+   constexpr bool IsStrike() const { return FirstRoll() == 10; }
 
 private:
    int _firstRoll = 0;

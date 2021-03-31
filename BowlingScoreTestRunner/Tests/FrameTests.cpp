@@ -8,23 +8,23 @@ class FrameTests : public testing::Test {};
 
 TEST_F( FrameTests, Constructor_NoArguments_FirstRollZero )
 {
-   Frame f;
+   constexpr Frame f;
 
-   ASSERT_EQ( f.FirstRoll(), 0 );
+   static_assert( f.FirstRoll() == 0, "Default constructed should have first roll of 0 :(" );
 }
 
 TEST_F( FrameTests, Constructor_NoArguments_SecondRollZero )
 {
-   Frame f;
+   constexpr Frame f;
 
-   ASSERT_EQ( f.SecondRoll(), 0 );
+   static_assert( f.SecondRoll() == 0, "Default constructed should have second roll of 0 :("  );
 }
 
 TEST_F( FrameTests, Constructor_FirstRollTwo_FirstRollTw0 )
 {
-   Frame f( 2, 4 );
+   constexpr Frame f( 2, 4 );
 
-   ASSERT_EQ( f.FirstRoll(), 2 );
+   static_assert( f.FirstRoll() == 2, "Constructed with first roll of 2 should have first roll of 2 :(" );
 }
 
 TEST_F( FrameTests, Constructor_SecondRollFour_SecondRollFour )

@@ -6,7 +6,7 @@ using namespace testing;
 
 class BowlingScoreTests : public testing::Test {};
 
-BowlingScore CreateScoreWithPerfectGame()
+constexpr BowlingScore CreateScoreWithPerfectGame()
 {
    BowlingScore bowlingScore;
    for( int i=0; i<12; i++)
@@ -19,6 +19,6 @@ BowlingScore CreateScoreWithPerfectGame()
 
 TEST_F( BowlingScoreTests, GetScore_PerfectGame_ScoreIs300 )
 {
-   BowlingScore b = CreateScoreWithPerfectGame();
-   ASSERT_EQ( b.GetScore(), 300 );
+   constexpr BowlingScore b = CreateScoreWithPerfectGame();
+   static_assert( b.GetScore() == 300, "Perfect game should have score of 300 :(" );
 }
